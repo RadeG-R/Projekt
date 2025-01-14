@@ -20,12 +20,15 @@ def get_db_connection():
 
 # Funkcja do czyszczenia wygenerowanego grafu
 def clear_hypergraph_image():
-    image_path = os.path.join('static', 'hypergraph.png')
+    static_path = os.path.join('Projekt_sieci', 'static')
+    image_path = os.path.join(static_path, 'hypergraph.png')
     if os.path.exists(image_path):
         os.remove(image_path)
 
-
-
+# Upewnij się, że folder static istnieje
+static_path = os.path.join('Projekt_sieci', 'static')
+if not os.path.exists(static_path):
+    os.makedirs(static_path)
 
 # Strona główna
 @app.route('/')
@@ -167,7 +170,7 @@ def hypergraph():
         clear_hypergraph_image()  # Usuwamy stary graf przed zapisaniem nowego
         plt.figure(figsize=(14, 10))
         hynx.drawing.draw(H, with_node_labels=True)
-        image_path = os.path.join('static', 'hypergraph.png')
+        image_path = os.path.join(static_path, 'hypergraph.png')
         plt.savefig(image_path)
         plt.close()
 
