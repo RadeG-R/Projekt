@@ -10,7 +10,7 @@ import os
 app = Flask(__name__)
 
 # Ścieżka do bazy danych
-DATABASE = 'smoke_data.db'
+DATABASE = 'Projekt_sieci/smoke_data.db'
 
 # Funkcja do połączenia z bazą danych
 def get_db_connection():
